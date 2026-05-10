@@ -163,10 +163,10 @@
       </p>
     </section>
 
-    <!-- Omitted sections for brevity -->
-
+    <!-- Omitted for brevity -->
   </main>
 
+  <!-- Mini-Game Section -->
   <div class="mini-game">
     <h2>Mini Memory Game</h2>
     <p>Click the button below as fast as you can! The goal is to beat your high score!</p>
@@ -180,18 +180,27 @@
   </footer>
 
   <script>
+    let gameActive = false;
     let counter = 0;
 
     function startGame() {
-      counter = 0;
-      document.getElementById('gameMessage').innerText = 'Game started! Click, click, click!';
+      if (gameActive) return; // Prevent multiple starts
+      gameActive = true; // Set game state to active
+      counter = 0; // Reset the click counter
+      document.getElementById('gameMessage').innerText = 'Game started! Click the button as many times as you can!';
+      
+      // Allow 5 seconds to play the game
       setTimeout(() => {
+        gameActive = false; // End the game
         document.getElementById('gameMessage').innerText = 'Game Over! Total clicks: ' + counter;
-      }, 5000); // 5 seconds to play
+      }, 5000);
     }
 
+    // Increment counter on clicks if the game is active
     document.querySelector('.mini-game button').addEventListener('click', () => {
-      counter++;
+      if (gameActive) {
+        counter++;
+      }
     });
   </script>
 </body>
