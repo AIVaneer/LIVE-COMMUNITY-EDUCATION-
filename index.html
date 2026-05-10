@@ -37,7 +37,6 @@
 
     h2 {
       color: #38bdf8;
-      margin-top: 0;
     }
 
     p {
@@ -67,41 +66,9 @@
       box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
     }
 
-    main {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-      margin: 30px 0;
-    }
-
-    .card {
-      background: rgba(15, 23, 42, 0.82);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 0 24px rgba(56, 189, 248, 0.08);
-    }
-
-    .card strong {
-      color: #facc15;
-    }
-
-    section {
-      margin: 45px 0;
-    }
-
-    .callout {
-      background: linear-gradient(135deg, rgba(124, 58, 237, 0.35), rgba(14, 165, 233, 0.25));
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: 22px;
-      padding: 28px;
+    .mini-game {
       text-align: center;
+      margin: 40px 0;
     }
 
     footer {
@@ -110,41 +77,13 @@
       color: #94a3b8;
       font-size: 14px;
     }
-
-    .mini-game {
-      text-align: center;
-      margin: 40px 0;
-    }
-
-    .mini-game button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      font-weight: bold;
-      background: #38bdf8;
-      color: #020617;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-    }
-
-    .mini-game button:hover {
-      background: #2563eb;
-      color: #dbeafe;
-    }
   </style>
 </head>
 <body>
-
   <header>
     <div class="badge">PCVR Community Portal</div>
     <h1>Live Community Education</h1>
-    <p class="hero-text">
-      A learning hub for creators, builders, and beginners who want to turn ideas into real projects.
-      Build to Learn. Move to Learn. Always for good, never for bad.
-    </p>
-
+    <p class="hero-text">A learning hub for creators, builders, and beginners who want to turn ideas into real projects.</p>
     <div class="buttons">
       <a class="button" href="#paths">Start Learning</a>
       <a class="button" href="#lessons">View Lessons</a>
@@ -153,55 +92,18 @@
   </header>
 
   <main>
-
-    <section>
-      <h2>What This Is</h2>
-      <p>
-        Live Community Education is a simple portal for learning through action.
-        The goal is to help people build real skills using tools like HTML, Python,
-        GarageBand, iMovie, AI systems, and creative workflows.
-      </p>
+    <section id="paths">
+      <h2>Mini Game</h2>
+      <div class="mini-game">
+        <p>Test your clicking speed and reflexes!</p>
+        <a class="button" href="game.html">Play the Mini Game</a>
+      </div>
     </section>
-
-    <!-- Omitted for brevity -->
   </main>
-
-  <!-- Mini-Game Section -->
-  <div class="mini-game">
-    <h2>Mini Memory Game</h2>
-    <p>Click the button below as fast as you can! The goal is to beat your high score!</p>
-    <button onclick="startGame()">Start Game</button>
-    <p id="gameMessage">Press the button to begin!</p>
-  </div>
 
   <footer>
     PCVR Live Community Education<br>
     Build to Learn. Move to Learn.
   </footer>
-
-  <script>
-    let gameActive = false;
-    let counter = 0;
-
-    function startGame() {
-      if (gameActive) return; // Prevent multiple starts
-      gameActive = true; // Set game state to active
-      counter = 0; // Reset the click counter
-      document.getElementById('gameMessage').innerText = 'Game started! Click the button as many times as you can!';
-      
-      // Allow 5 seconds to play the game
-      setTimeout(() => {
-        gameActive = false; // End the game
-        document.getElementById('gameMessage').innerText = 'Game Over! Total clicks: ' + counter;
-      }, 5000);
-    }
-
-    // Increment counter on clicks if the game is active
-    document.querySelector('.mini-game button').addEventListener('click', () => {
-      if (gameActive) {
-        counter++;
-      }
-    });
-  </script>
 </body>
 </html>
