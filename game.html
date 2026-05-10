@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Game</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #1e1b4b, #020617 55%, #000);
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #facc15;
+      text-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
+    }
+
+    p {
+      font-size: 18px;
+      color: #dbeafe;
+    }
+
+    .game-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 18px;
+      font-weight: bold;
+      background: #38bdf8;
+      color: #020617;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+    }
+
+    .game-button:hover {
+      background: #2563eb;
+      color: #dbeafe;
+    }
+
+    a.back-link {
+      margin-top: 20px;
+      display: inline-block;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: 2px solid #38bdf8;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+
+    a.back-link:hover {
+      background: #38bdf8;
+      color: #020617;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mini Memory Game</h1>
+  <p>Click the button below as fast as you can! The goal is to beat your high score!</p>
+  <button class="game-button" onclick="startGame()">Start Game</button>
+  <p id="gameMessage">Press "Start Game" to begin.</p>
+  <a class="back-link" href="index.html">Back to Main Page</a>
+
+  <script>
+    let gameActive = false;
+    let counter = 0;
+
+    function startGame() {
+      if (gameActive) return; // Prevent multiple games starting
+
+      gameActive = true;
+      counter = 0;
+      document.getElementById("gameMessage").innerText = "Game started! Click the button!";
+
+      // Allow 5 seconds to play the game
+      setTimeout(() => {
+        gameActive = false;
+        document.getElementById("gameMessage").innerText = `Game Over! You clicked ${counter} times.`;
+      }, 5000);
+    }
+
+    document.querySelector(".game-button").addEventListener("click", () => {
+      if (gameActive) {
+        counter++;
+      }
+    });
+  </script>
+</body>
+</html>
